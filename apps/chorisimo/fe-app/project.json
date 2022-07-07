@@ -65,7 +65,8 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4198
+        "port": 4198,
+        "proxyConfig": "apps/chorisimo/fe-app/proxy.conf.json"
       }
     },
     "extract-i18n": {

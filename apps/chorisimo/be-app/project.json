@@ -1,0 +1,57 @@
+{
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/chorisimo/be-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/chorisimo/be-app",
+        "main": "apps/chorisimo/be-app/src/main.ts",
+        "tsConfig": "apps/chorisimo/be-app/tsconfig.app.json",
+        "assets": ["apps/chorisimo/be-app/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/chorisimo/be-app/src/environments/environment.ts",
+              "with": "apps/chorisimo/be-app/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:node",
+      "options": {
+        "buildTarget": "chorisimo-be-app:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "chorisimo-be-app:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/chorisimo/be-app/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/chorisimo/be-app"],
+      "options": {
+        "jestConfig": "apps/chorisimo/be-app/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": ["scope:app", "app:chorisimo"]
+}
