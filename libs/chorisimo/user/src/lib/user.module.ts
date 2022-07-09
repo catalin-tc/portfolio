@@ -10,5 +10,5 @@ import { ChorisimoUser } from './user.entity';
   providers: [ChorisimoUserService],
   exports: [ChorisimoUserService],
 })
-export class UserModule {
+export class ChorisimoUserModule {
 }
