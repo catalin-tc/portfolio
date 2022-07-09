@@ -65,7 +65,7 @@
       },
       "defaultConfiguration": "development",
       "options": {
-        "port": 4198,
+        "port": 5200,
         "proxyConfig": "apps/chorisimo/fe-app/proxy.conf.json"
       }
     },

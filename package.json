@@ -3,9 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "nx serve",
-    "build": "nx build",
-    "test": "nx test",
+    "chorisimo:serve": "nx run-many --target=serve --projects=chorisimo-fe-app,chorisimo-be-app",
+    "chorisimo:build": "nx run-many --target=build --projects=chorisimo-fe-app,chorisimo-be-app",
+    "chorisimo:deploy": "npm run chorisimo:build && node dist/apps/chorisimo/be-app/main.js",
     "postinstall": "ngcc --properties es2020 browser module main"
   },
   "private": true,
