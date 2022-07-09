@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@chorisimo/data/database": ["libs/chorisimo/data/database/src/index.ts"]
+      "@chorisimo/data/database": ["libs/chorisimo/data/database/src/index.ts"],
+      "@chorisimo/user": ["libs/chorisimo/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

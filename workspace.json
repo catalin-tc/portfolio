@@ -4,6 +4,7 @@
   "projects": {
     "chorisimo-be-app": "apps/chorisimo/be-app",
     "chorisimo-data-database": "libs/chorisimo/data/database",
-    "chorisimo-fe-app": "apps/chorisimo/fe-app"
+    "chorisimo-fe-app": "apps/chorisimo/fe-app",
+    "chorisimo-user": "libs/chorisimo/user"
   }
 }
