@@ -24,6 +24,7 @@
     "@nestjs/platform-express": "^8.0.0",
     "@nestjs/serve-static": "^2.2.2",
     "@nestjs/typeorm": "^9.0.0",
+    "argon2": "^0.28.7",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.4.0",
