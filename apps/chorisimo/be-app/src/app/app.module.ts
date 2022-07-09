@@ -1,3 +1,4 @@
+import { ChorisimoDatabaseModule } from '@chorisimo/data/database';
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 
@@ -11,6 +12,9 @@ import { join } from 'path';
       rootPath: join(__dirname, '..', 'fe-app'),
       exclude: ['/api*'],
       serveRoot: '/app'
+    }),
+    ChorisimoDatabaseModule.setup({
+      url: process.env['DATABASE_URL']
     })
   ],
   controllers: [AppController],
