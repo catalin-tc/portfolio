@@ -27,6 +27,9 @@ export class ChorisimoDatabaseModule {
       module: ChorisimoDatabaseModule,
       imports: [
         TypeOrmModule.forFeature(entities)
+      ],
+      exports: [
+        TypeOrmModule
       ]
     };
   }
