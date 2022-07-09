@@ -26,4 +26,11 @@ export class ChorisimoUser {
     nullable: false
   })
   public password!: string;
+
+  @Column({
+    nullable: false,
+    default: false
+  })
+  public deleted!: boolean;
+
 }

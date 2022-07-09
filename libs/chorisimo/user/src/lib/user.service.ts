@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ChorisimoUser } from './user.entity';
-import { hash } from './utils';
+import { hash, UpdatableField } from './user.utils';
 
 @Injectable()
 export class ChorisimoUserService {
@@ -13,6 +13,13 @@ export class ChorisimoUserService {
     this.#usersRepository = usersRepository;
   }
 
+  /**
+   * Inserts a user into the database
+   * To prevent unwanted updates it will set the id to undefined.
+   * To prevent adding a potentially bad record it will also set the deleted flag to false
+   * It will also hash the password before the insert operation to ensure security.
+   * @param user
+   */
   public async insert(user: ChorisimoUser): Promise<ChorisimoUser> {
 
     // removing the id as a guard against edits
@@ -23,8 +30,68 @@ export class ChorisimoUserService {
     // hashing the password for protection
     user.password = await hash(user.password);
 
+    // Prevents inserting a deleted user;
+    user.deleted = false;
+
     return this.#usersRepository.save(user);
 
   }
 
+  /**
+   * Does a soft delete operation on the user
+   * @param id
+   */
+  public async deleteById(id: number): Promise<ChorisimoUser | null> {
+
+    const toDelete = await this.#usersRepository.findOneBy({ id, deleted: false });
+
+    if (toDelete === null) {
+      return null;
+    }
+
+    toDelete.password = '';
+    toDelete.email = '';
+
+    return this.#usersRepository.save(toDelete);
+
+  }
+
+  /**
+   * Updated at least one of the fields.
+   * If no fields are provided, then nothing happens
+   * If a password is provided, it will be hashed beforehand
+   * @param id
+   * @param fields
+   */
+  public async update(id: number, fields: Partial<UpdatableField>): Promise<ChorisimoUser | null> {
+
+    const newEmail = fields.email;
+    const newPasswordCandidate = fields.password;
+    const newNickname = fields.nickname;
+
+    if ([typeof newEmail, typeof newPasswordCandidate, typeof newNickname].every(x => x === 'undefined')) {
+      return null;
+    }
+
+    const toUpdate = await this.#usersRepository.findOneBy({ id, deleted: false });
+
+    if (toUpdate === null) {
+      return null;
+    }
+
+    toUpdate.password = newPasswordCandidate ? await hash(newPasswordCandidate) : toUpdate.password;
+    toUpdate.email = newEmail ?? toUpdate.email;
+    toUpdate.nickname = newNickname ?? toUpdate.nickname;
+
+    return this.#usersRepository.save(toUpdate);
+
+  }
+
+  /**
+   * Gets a user by id.
+   * @param id
+   */
+  public async getById(id: number): Promise<ChorisimoUser | null> {
+    return this.#usersRepository.findOneBy({ id, deleted: false });
+  }
 }
