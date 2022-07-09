@@ -10,14 +10,25 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": ["es2017", "dom"],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@chorisimo/data/database": ["libs/chorisimo/data/database/src/index.ts"],
-      "@chorisimo/user": ["libs/chorisimo/user/src/index.ts"]
+      "@chorisimo/data/database": [
+        "libs/chorisimo/data/database/src/index.ts"
+      ],
+      "@chorisimo/user": [
+        "libs/chorisimo/user/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
