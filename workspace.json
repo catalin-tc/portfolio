@@ -3,6 +3,7 @@
   "version": 2,
   "projects": {
     "chorisimo-be-app": "apps/chorisimo/be-app",
+    "chorisimo-data-database": "libs/chorisimo/data/database",
     "chorisimo-fe-app": "apps/chorisimo/fe-app"
   }
 }
