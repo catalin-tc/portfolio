@@ -12,6 +12,8 @@ export class ChorisimoDatabaseModule {
         TypeOrmModule.forRoot({
           type: 'postgres',
           url: setup.url,
+          synchronize: setup.sync,
+          autoLoadEntities: true,
           ssl: {
             rejectUnauthorized: false,
           }
