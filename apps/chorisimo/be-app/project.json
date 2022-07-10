@@ -9,8 +9,7 @@
       "options": {
         "outputPath": "dist/apps/chorisimo/be-app",
         "main": "apps/chorisimo/be-app/src/main.ts",
-        "tsConfig": "apps/chorisimo/be-app/tsconfig.app.json",
-        "assets": ["apps/chorisimo/be-app/src/assets"]
+        "tsConfig": "apps/chorisimo/be-app/tsconfig.app.json"
       },
       "configurations": {
         "production": {
