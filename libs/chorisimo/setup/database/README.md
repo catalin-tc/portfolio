@@ -1,3 +1,3 @@
-# chorisimo-data-database
+# chorisimo-setup-database
 
 This library was generated with [Nx](https://nx.dev).

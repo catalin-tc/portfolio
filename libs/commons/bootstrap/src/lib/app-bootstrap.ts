@@ -3,7 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppBootstrapOptions } from './app-bootstrap.options';
 
 export async function appBootstrap(options: AppBootstrapOptions): Promise<INestApplication> {
-  const app = await NestFactory.create(options.boostrapModule);
+  const app = await NestFactory.create(options.bootstrapModule);
 
   app.setGlobalPrefix(options.globalPrefix);
 

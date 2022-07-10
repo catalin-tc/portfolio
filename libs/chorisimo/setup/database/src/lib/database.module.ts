@@ -16,21 +16,17 @@ export class ChorisimoDatabaseModule {
           autoLoadEntities: true,
           ssl: {
             rejectUnauthorized: false,
-          }
-        })
-      ]
+          },
+        }),
+      ],
     };
   }
 
   public static forEntity(entities: DatabaseEntities): DynamicModule {
     return {
       module: ChorisimoDatabaseModule,
-      imports: [
-        TypeOrmModule.forFeature(entities)
-      ],
-      exports: [
-        TypeOrmModule
-      ]
+      imports: [TypeOrmModule.forFeature(entities)],
+      exports: [TypeOrmModule],
     };
   }
 }

@@ -1,4 +1,4 @@
-import { ChorisimoDatabaseModule } from '@chorisimo/data/database';
+import { ChorisimoDatabaseModule } from '@chorisimo/setup/database';
 import { Module } from '@nestjs/common';
 import { ChorisimoUser } from './user.entity';
 import { ChorisimoUserService } from './user.service';

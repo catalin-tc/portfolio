@@ -4,9 +4,10 @@
   "projects": {
     "chorisimo-apis-user": "libs/chorisimo/apis/user",
     "chorisimo-be-app": "apps/chorisimo/be-app",
-    "chorisimo-data-database": "libs/chorisimo/data/database",
     "chorisimo-domains-user": "libs/chorisimo/domains/user",
     "chorisimo-fe-app": "apps/chorisimo/fe-app",
-    "commons-bootstrap": "libs/commons/bootstrap"
+    "chorisimo-setup-database": "libs/chorisimo/setup/database",
+    "commons-bootstrap": "libs/commons/bootstrap",
+    "commons-environment": "libs/commons/environment"
   }
 }
