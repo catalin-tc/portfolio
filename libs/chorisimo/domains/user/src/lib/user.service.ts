@@ -3,14 +3,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { ChorisimoUser } from './user.entity';
 import { hash, UpdatableField } from './user.utils';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class ChorisimoUserService {
   readonly #usersRepository: Repository<ChorisimoUser>;
 
-  constructor(
-    @InjectRepository(ChorisimoUser) usersRepository: Repository<ChorisimoUser>
-  ) {
+  constructor(@InjectRepository(ChorisimoUser) usersRepository: Repository<ChorisimoUser>) {
     this.#usersRepository = usersRepository;
   }
 
@@ -21,7 +20,7 @@ export class ChorisimoUserService {
    * It will also hash the password before the insert operation to ensure security.
    * @param user
    */
-  public async insert(user: ChorisimoUser): Promise<ChorisimoUser> {
+  public async insert(user: ChorisimoUser): Promise<Required<ChorisimoUser>> {
     // removing the id as a guard against edits
     if (typeof user.id !== 'undefined') {
       user.id = undefined;
@@ -33,7 +32,9 @@ export class ChorisimoUserService {
     // Prevents inserting a deleted user;
     user.deleted = false;
 
-    return this.#usersRepository.save(user);
+    const insertedUserPromise = this.#usersRepository.save(user);
+
+    return insertedUserPromise as Promise<Required<ChorisimoUser>>;
   }
 
   /**
@@ -51,7 +52,8 @@ export class ChorisimoUserService {
     }
 
     toDelete.password = '';
-    toDelete.email = '';
+    toDelete.email = crypto.randomUUID();
+    toDelete.deleted = true;
 
     return this.#usersRepository.save(toDelete);
   }
@@ -66,7 +68,7 @@ export class ChorisimoUserService {
   public async update(
     id: number,
     fields: Partial<UpdatableField>
-  ): Promise<ChorisimoUser | null> {
+  ): Promise<Required<ChorisimoUser> | null | symbol> {
     const newEmail = fields.email;
     const newPasswordCandidate = fields.password;
     const newNickname = fields.nickname;
@@ -76,7 +78,7 @@ export class ChorisimoUserService {
         (x) => x === 'undefined'
       )
     ) {
-      return null;
+      return Symbol();
     }
 
     const toUpdate = await this.#usersRepository.findOneBy({
@@ -94,14 +96,16 @@ export class ChorisimoUserService {
     toUpdate.email = newEmail ?? toUpdate.email;
     toUpdate.nickname = newNickname ?? toUpdate.nickname;
 
-    return this.#usersRepository.save(toUpdate);
+    const patchedPromise = this.#usersRepository.save(toUpdate);
+
+    return patchedPromise as Promise<Required<ChorisimoUser>>;
   }
 
   /**
    * Gets a user by id.
    * @param id
    */
-  public async getById(id: number): Promise<ChorisimoUser | null> {
-    return this.#usersRepository.findOneBy({ id, deleted: false });
+  public getById(id: number): Promise<Required<ChorisimoUser> | null> {
+    return this.#usersRepository.findOneBy({ id, deleted: false }) as Promise<Required<ChorisimoUser> | null>;
   }
 }
