@@ -2,6 +2,7 @@
   "$schema": "./node_modules/nx/schemas/workspace-schema.json",
   "version": 2,
   "projects": {
+    "chorisimo-apis-user": "libs/chorisimo/apis/user",
     "chorisimo-be-app": "apps/chorisimo/be-app",
     "chorisimo-data-database": "libs/chorisimo/data/database",
     "chorisimo-domains-user": "libs/chorisimo/domains/user",
