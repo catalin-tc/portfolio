@@ -1,6 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { EntitySchema } from 'typeorm';
+import { DatabaseEntities } from './entities.type';
 import { ChorisimoDBSetup } from './setup.interface';
 
 @Module({})
@@ -12,6 +12,8 @@ export class ChorisimoDatabaseModule {
         TypeOrmModule.forRoot({
           type: 'postgres',
           url: setup.url,
+          synchronize: setup.sync,
+          autoLoadEntities: true,
           ssl: {
             rejectUnauthorized: false,
           }
@@ -20,11 +22,14 @@ export class ChorisimoDatabaseModule {
     };
   }
 
-  public static forEntity(entities: Array<EntitySchema>): DynamicModule {
+  public static forEntity(entities: DatabaseEntities): DynamicModule {
     return {
       module: ChorisimoDatabaseModule,
       imports: [
         TypeOrmModule.forFeature(entities)
+      ],
+      exports: [
+        TypeOrmModule
       ]
     };
   }

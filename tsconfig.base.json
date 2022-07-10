@@ -13,9 +13,12 @@
     "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
+    "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@chorisimo/data/database": ["libs/chorisimo/data/database/src/index.ts"]
+      "@chorisimo/apis/user": ["libs/chorisimo/apis/user/src/index.ts"],
+      "@chorisimo/data/database": ["libs/chorisimo/data/database/src/index.ts"],
+      "@chorisimo/user": ["libs/chorisimo/domains/user/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
