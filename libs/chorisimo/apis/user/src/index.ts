@@ -1,2 +1,2 @@
-export * from './lib/chorisimo-apis-user.controller';
-export * from './lib/chorisimo-apis-user.module';
+export * from './lib/api-user.controller';
+export * from './lib/apis-user.module';

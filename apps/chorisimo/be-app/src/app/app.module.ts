@@ -1,5 +1,5 @@
+import { ChorisimoApisUserModule } from '@chorisimo/apis/user';
 import { ChorisimoDatabaseModule } from '@chorisimo/data/database';
-import { ChorisimoUserModule } from '@chorisimo/user';
 import { Module } from '@nestjs/common';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
@@ -18,7 +18,7 @@ import { AppService } from './app.service';
       url: process.env['DATABASE_URL'] as string,
       sync: true
     }),
-    ChorisimoUserModule
+    ChorisimoApisUserModule
   ],
   controllers: [AppController],
   providers: [AppService],
