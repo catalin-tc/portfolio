@@ -20,6 +20,9 @@
       "@chorisimo/setup/database": [
         "libs/chorisimo/setup/database/src/index.ts"
       ],
+      "@chorisimo/ui/access-portal": [
+        "libs/chorisimo/ui/access-portal/src/index.ts"
+      ],
       "@chorisimo/user": ["libs/chorisimo/domains/user/src/index.ts"],
       "@portfolio/commons/bootstrap": ["libs/commons/bootstrap/src/index.ts"],
       "@portfolio/commons/environment": [

@@ -1,0 +1,28 @@
+.layout-wrapper {
+  @apply tw-flex;
+  @apply tw-w-full tw-h-full;
+  @apply tw-bg-[image:var(--container-bg-src)];
+  @apply tw-bg-no-repeat tw-bg-cover tw-bg-center;
+}
+
+.navigator {
+  @apply tw-flex tw-justify-evenly;
+  @apply tw-w-full tw-h-16;
+  @apply tw-mt-16;
+}
+
+.navigator--link {
+  @apply tw-flex tw-justify-center tw-items-center;
+  @apply tw-aspect-square;
+  @apply tw-h-20 md:tw-h-32;
+  @apply tw-rounded-full;
+  @apply tw-bg-white;
+  @apply md:tw-text-xl;
+  @apply tw-shadow;
+
+  &.active {
+    @apply tw-text-white;
+    @apply tw-bg-slate-700;
+  }
+
+}

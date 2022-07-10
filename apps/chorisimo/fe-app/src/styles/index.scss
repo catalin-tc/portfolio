@@ -1,0 +1,5 @@
+// Vendors first
+@import "./vendors/tailwind";
+
+// Application second
+@import "./app/setup";

@@ -1,0 +1,18 @@
+<div [ngStyle]="{'--container-bg-src':'url('+this.config.containerBgSrc+')'}"
+     class="layout-wrapper">
+
+  <nav *ngIf="this.activatedSegment$ | async as activatedSegment"
+       class="navigator">
+    <a [ngClass]="{'active': activatedSegment === 'login'}"
+       class="navigator--link"
+       routerLink="login">
+      Login
+    </a>
+    <a [ngClass]="{'active': activatedSegment === 'register'}"
+       class="navigator--link"
+       routerLink="register">
+      Register
+    </a>
+  </nav>
+
+</div>

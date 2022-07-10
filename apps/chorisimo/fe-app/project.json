@@ -18,7 +18,7 @@
           "apps/chorisimo/fe-app/src/favicon.ico",
           "apps/chorisimo/fe-app/src/assets"
         ],
-        "styles": ["apps/chorisimo/fe-app/src/styles.scss"],
+        "styles": ["apps/chorisimo/fe-app/src/styles/index.scss"],
         "scripts": []
       },
       "configurations": {
@@ -94,5 +94,5 @@
       }
     }
   },
-  "tags": ["scrope:app", "app:chorisimo"]
+  "tags": ["scope:app", "app:chorisimo"]
 }

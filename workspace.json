@@ -7,6 +7,7 @@
     "chorisimo-domains-user": "libs/chorisimo/domains/user",
     "chorisimo-fe-app": "apps/chorisimo/fe-app",
     "chorisimo-setup-database": "libs/chorisimo/setup/database",
+    "chorisimo-ui-access-portal": "libs/chorisimo/ui/access-portal",
     "commons-bootstrap": "libs/commons/bootstrap",
     "commons-environment": "libs/commons/environment"
   }

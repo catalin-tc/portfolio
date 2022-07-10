@@ -1,0 +1,25 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/chorisimo/ui/access-portal/src",
+  "prefix": "chorisimo-access-portal",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/chorisimo/ui/access-portal"],
+      "options": {
+        "jestConfig": "libs/chorisimo/ui/access-portal/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/chorisimo/ui/access-portal/**/*.ts",
+          "libs/chorisimo/ui/access-portal/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["scrope:lib", "lib:chorisimo"]
+}

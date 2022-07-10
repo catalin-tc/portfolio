@@ -1,0 +1,23 @@
+html {
+  @apply tw-font-inter;
+  @apply tw-text-base;
+}
+
+html, body {
+  @apply tw-h-full;
+}
+
+router-outlet {
+  @apply tw-hidden;
+
+  + ng-component {
+    @apply tw-block;
+    @apply tw-h-full;
+  }
+
+}
+
+[app-root] {
+  @apply tw-block;
+  @apply tw-h-full;
+}
