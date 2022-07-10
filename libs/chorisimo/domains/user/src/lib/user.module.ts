@@ -4,11 +4,8 @@ import { ChorisimoUser } from './user.entity';
 import { ChorisimoUserService } from './user.service';
 
 @Module({
-  imports: [
-    ChorisimoDatabaseModule.forEntity([ChorisimoUser])
-  ],
+  imports: [ChorisimoDatabaseModule.forEntity([ChorisimoUser])],
   providers: [ChorisimoUserService],
   exports: [ChorisimoUserService],
 })
-export class ChorisimoUserModule {
-}
+export class ChorisimoUserModule {}

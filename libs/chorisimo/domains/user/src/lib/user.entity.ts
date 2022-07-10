@@ -1,36 +1,34 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({
-  name: 'Users'
+  name: 'Users',
 })
 export class ChorisimoUser {
-
   @PrimaryGeneratedColumn()
   public id?: number;
 
   @Column({
     unique: true,
     length: 100,
-    nullable: false
+    nullable: false,
   })
   public email!: string;
 
   @Column({
     unique: true,
     length: 50,
-    nullable: false
+    nullable: false,
   })
   public nickname!: string;
 
   @Column({
-    nullable: false
+    nullable: false,
   })
   public password!: string;
 
   @Column({
     nullable: false,
-    default: false
+    default: false,
   })
   public deleted!: boolean;
-
 }

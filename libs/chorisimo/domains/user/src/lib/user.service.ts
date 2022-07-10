@@ -6,10 +6,11 @@ import { hash, UpdatableField } from './user.utils';
 
 @Injectable()
 export class ChorisimoUserService {
-
   readonly #usersRepository: Repository<ChorisimoUser>;
 
-  constructor(@InjectRepository(ChorisimoUser) usersRepository: Repository<ChorisimoUser>) {
+  constructor(
+    @InjectRepository(ChorisimoUser) usersRepository: Repository<ChorisimoUser>
+  ) {
     this.#usersRepository = usersRepository;
   }
 
@@ -21,7 +22,6 @@ export class ChorisimoUserService {
    * @param user
    */
   public async insert(user: ChorisimoUser): Promise<ChorisimoUser> {
-
     // removing the id as a guard against edits
     if (typeof user.id !== 'undefined') {
       user.id = undefined;
@@ -34,7 +34,6 @@ export class ChorisimoUserService {
     user.deleted = false;
 
     return this.#usersRepository.save(user);
-
   }
 
   /**
@@ -42,8 +41,10 @@ export class ChorisimoUserService {
    * @param id
    */
   public async deleteById(id: number): Promise<ChorisimoUser | null> {
-
-    const toDelete = await this.#usersRepository.findOneBy({ id, deleted: false });
+    const toDelete = await this.#usersRepository.findOneBy({
+      id,
+      deleted: false,
+    });
 
     if (toDelete === null) {
       return null;
@@ -53,7 +54,6 @@ export class ChorisimoUserService {
     toDelete.email = '';
 
     return this.#usersRepository.save(toDelete);
-
   }
 
   /**
@@ -63,28 +63,38 @@ export class ChorisimoUserService {
    * @param id
    * @param fields
    */
-  public async update(id: number, fields: Partial<UpdatableField>): Promise<ChorisimoUser | null> {
-
+  public async update(
+    id: number,
+    fields: Partial<UpdatableField>
+  ): Promise<ChorisimoUser | null> {
     const newEmail = fields.email;
     const newPasswordCandidate = fields.password;
     const newNickname = fields.nickname;
 
-    if ([typeof newEmail, typeof newPasswordCandidate, typeof newNickname].every(x => x === 'undefined')) {
+    if (
+      [typeof newEmail, typeof newPasswordCandidate, typeof newNickname].every(
+        (x) => x === 'undefined'
+      )
+    ) {
       return null;
     }
 
-    const toUpdate = await this.#usersRepository.findOneBy({ id, deleted: false });
+    const toUpdate = await this.#usersRepository.findOneBy({
+      id,
+      deleted: false,
+    });
 
     if (toUpdate === null) {
       return null;
     }
 
-    toUpdate.password = newPasswordCandidate ? await hash(newPasswordCandidate) : toUpdate.password;
+    toUpdate.password = newPasswordCandidate
+      ? await hash(newPasswordCandidate)
+      : toUpdate.password;
     toUpdate.email = newEmail ?? toUpdate.email;
     toUpdate.nickname = newNickname ?? toUpdate.nickname;
 
     return this.#usersRepository.save(toUpdate);
-
   }
 
   /**

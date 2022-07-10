@@ -23,7 +23,7 @@
         "libs/chorisimo/data/database/src/index.ts"
       ],
       "@chorisimo/user": [
-        "libs/chorisimo/user/src/index.ts"
+        "libs/chorisimo/domains/user/src/index.ts"
       ]
     }
   },

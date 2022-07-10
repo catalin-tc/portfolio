@@ -1,11 +1,11 @@
 {
-  "extends": ["../../../.eslintrc.json"],
+  "extends": ["../../../../.eslintrc.json"],
   "ignorePatterns": ["!**/*"],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
       "parserOptions": {
-        "project": ["libs/chorisimo/user/tsconfig.*?.json"]
+        "project": ["libs/chorisimo/domains/user/tsconfig.*?.json"]
       },
       "rules": {}
     },
